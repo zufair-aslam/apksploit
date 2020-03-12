@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 echo "Made Only For This Course"
+mkdir RC
+mkdir payload
 read -p 'Set LHOST: ' lhost
 read -p 'Set LPORT: ' lport
 read -p 'Set Payload Name: ' name
